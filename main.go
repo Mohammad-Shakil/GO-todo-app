@@ -66,6 +66,7 @@ func main() {
 			for i := 0; i < len(Tasks); i++ {
 				if op == Tasks[i].Work {
 					index = i
+					break
 				}
 			}
 			if index == -1 {
