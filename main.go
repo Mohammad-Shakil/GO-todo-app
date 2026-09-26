@@ -58,7 +58,24 @@ func main() {
 
 		case "Q", "q":
 			return
+		case "4":
+			var op string
+			fmt.Print("Enter completed task name:")
+			fmt.Scanln(&op)
+			index := -1
+			for i := 0; i < len(Tasks); i++ {
+				if op == Tasks[i].Work {
+					index = i
+				}
+			}
+			if index == -1 {
+				fmt.Println("\nNo task found")
+				continue
+			}
 
+			Tasks[index].Completed = true
+		default:
+			fmt.Println("\n Invalid operation")
 		}
 
 	}
