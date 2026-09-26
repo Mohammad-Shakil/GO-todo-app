@@ -7,7 +7,7 @@ import (
 func main() {
 
 	fmt.Println("---TO DO---")
-
+	var tasks []string
 	for {
 		var option string
 
@@ -26,6 +26,16 @@ func main() {
 		default:
 			fmt.Println("\nInvalid operation")
 			continue
+		}
+		switch option {
+		case "1":
+			var task string
+			fmt.Print("\n Enter task:")
+			fmt.Scanln(&task)
+			tasks = append(tasks, task)
+		case "2":
+			fmt.Println()
+			fmt.Println("Tasks:", tasks)
 		}
 
 	}
