@@ -29,6 +29,18 @@ func main() {
 			Tasks = append(Tasks, logics.Work{Work: task, Completed: false})
 		case "2":
 			fmt.Println()
+			fmt.Println("Total tasks:", len(Tasks))
+			Completed := 0
+			Pending := 0
+			for i := 0; i < len(Tasks); i++ {
+				if Tasks[i].Completed == true {
+					Completed++
+				} else {
+					Pending++
+				}
+			}
+			fmt.Println("Completed:", Completed)
+			fmt.Println("Pending:", Pending)
 			for i, t := range Tasks {
 				fmt.Printf("%d. %s (Done: %t)\n", i+1, t.Work, t.Completed)
 			}
@@ -60,7 +72,7 @@ func main() {
 			return
 		case "4":
 			var op string
-			fmt.Print("Enter completed task name:")
+			fmt.Print("\nEnter completed task name:")
 			fmt.Scanln(&op)
 			index := -1
 			for i := 0; i < len(Tasks); i++ {
@@ -75,6 +87,7 @@ func main() {
 			}
 
 			Tasks[index].Completed = true
+			fmt.Println("\nDONE")
 		default:
 			fmt.Println("\n Invalid operation")
 		}
