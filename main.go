@@ -76,18 +76,30 @@ func main() {
 		case "Q", "q":
 			return
 		case "5":
-			var task string
-			fmt.Print("Enter task name to update:")
-			fmt.Scanln(&task)
+			var oldTask string
+			fmt.Print("\nEnter task name to update:")
+			fmt.Scanln(&oldTask)
 
-			for _, value := range Tasks {
-
-				if value.Work != task {
-					fmt.Println("No task in this name")
-					continue
+			index := -1
+			for i := 0; i < len(Tasks); i++ {
+				if Tasks[i].Work == oldTask {
+					index = i
+					break
 				}
 
 			}
+
+			if index == -1 {
+				fmt.Println("No task found")
+				continue
+			}
+			var newtask string
+			fmt.Print("Enter new name:")
+			fmt.Scanln(&newtask)
+
+			Tasks[index].Work = newtask
+			fmt.Println("Task updated")
+
 		case "4":
 			var op string
 			fmt.Print("\nEnter completed task name:")
