@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"todo/logics"
 )
@@ -17,6 +18,7 @@ func main() {
 		fmt.Println("Show task--->2")
 		fmt.Println("Delete task--->3")
 		fmt.Println("Completed task--->4")
+		fmt.Println("Edit task-->5")
 		fmt.Println("Enter Q to exit")
 		fmt.Print("Choose:")
 		fmt.Scanln(&option)
@@ -56,7 +58,10 @@ func main() {
 			}
 
 			if index == -1 {
-				fmt.Println("NO task found")
+				err := errors.New("NO item found")
+				if err != nil {
+					fmt.Println("Item not found")
+				}
 				continue
 			}
 
@@ -70,6 +75,19 @@ func main() {
 
 		case "Q", "q":
 			return
+		case "5":
+			var task string
+			fmt.Print("Enter task name to update:")
+			fmt.Scanln(&task)
+
+			for _, value := range Tasks {
+
+				if value.Work != task {
+					fmt.Println("No task in this name")
+					continue
+				}
+
+			}
 		case "4":
 			var op string
 			fmt.Print("\nEnter completed task name:")
