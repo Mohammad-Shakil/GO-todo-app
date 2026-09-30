@@ -24,7 +24,7 @@ func main() {
 		fmt.Println("Completed task--->4")
 		fmt.Println("Edit task-->5")
 		fmt.Println("Search task keyword--->6")
-		fmt.Println("Enter Q to exit")
+		fmt.Println(" Q to exit")
 		fmt.Print("Choose:")
 		fmt.Scanln(&option)
 
