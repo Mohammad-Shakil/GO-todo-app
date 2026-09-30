@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"strings"
 	"todo/logics"
 )
 
@@ -19,6 +20,7 @@ func main() {
 		fmt.Println("Delete task--->3")
 		fmt.Println("Completed task--->4")
 		fmt.Println("Edit task-->5")
+		fmt.Println("Search task keyword--->6")
 		fmt.Println("Enter Q to exit")
 		fmt.Print("Choose:")
 		fmt.Scanln(&option)
@@ -118,6 +120,24 @@ func main() {
 
 			Tasks[index].Completed = true
 			fmt.Println("\nDONE")
+
+		case "6":
+			var keyWord string
+			fmt.Printf("\nEnter task: ")
+			fmt.Scanln(&keyWord)
+			found := false
+			for i := 0; i < len(Tasks); i++ {
+
+				if strings.Contains(Tasks[i].Work, keyWord) {
+					fmt.Println(Tasks[i].Work)
+					found = true
+				}
+
+			}
+			if found == false {
+				fmt.Println("NO task found")
+			}
+
 		default:
 			fmt.Println("\n Invalid operation")
 		}
