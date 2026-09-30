@@ -1,14 +1,17 @@
 package main
 
 import (
+	"bufio"
 	"errors"
 	"fmt"
+	"os"
 	"strings"
 	"todo/logics"
 )
 
 func main() {
 	var Tasks []logics.Work
+	reader := bufio.NewReader(os.Stdin)
 
 	fmt.Println("---TO DO---")
 
@@ -27,10 +30,13 @@ func main() {
 
 		switch option {
 		case "1":
-			var task string
+
 			fmt.Print("\n Enter task:")
-			fmt.Scanln(&task)
+			task, _ := reader.ReadString('\n')
+			task = strings.TrimSpace(task)
+
 			Tasks = append(Tasks, logics.Work{Work: task, Completed: false})
+
 		case "2":
 			fmt.Println()
 			fmt.Println("Total tasks:", len(Tasks))
@@ -49,9 +55,11 @@ func main() {
 				fmt.Printf("%d. %s (Done: %t)\n", i+1, t.Work, t.Completed)
 			}
 		case "3":
-			var deltask string
+
 			fmt.Print("Enter task to delete:")
-			fmt.Scanln(&deltask)
+			deltask, _ := reader.ReadString('\n')
+			deltask = strings.TrimSpace(deltask)
+
 			index := -1
 			for i := 0; i < len(Tasks); i++ {
 				if deltask == Tasks[i].Work {
